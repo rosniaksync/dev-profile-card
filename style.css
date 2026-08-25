@@ -28,6 +28,7 @@ body {
   background-image: var(--bg-url);
   background-repeat: no-repeat;
   background-size: cover;
+  height: 100vh;
 }
 
 body * {
@@ -77,11 +78,15 @@ body * {
   top: 50%;
   z-index: 1;
   transform: translateY(-50%);
+  animation: switch-slide-back 0.4s;
 }
 
 .light #switch button {
-  right: 0;
-  left: initial;
+  animation: switch-slide-in 0.4s forwards;
+}
+
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
 }
 
 #switch span {
@@ -147,4 +152,22 @@ footer {
   padding: 24px 0px;
   text-align: center;
   font-size: 14px;
+}
+
+@keyframes switch-slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes switch-slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
+  }
 }
